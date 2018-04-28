@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title><img src="http://static1.squarespace.com/static/5088002ee4b0763b7eee5ba4/t/558b7605e4b06ff50197a80d/1478644332807/?format=1500w" alt="green_logo" height='40'></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description}}
+    </ion-item>
+  </ion-list>
+  <div #map id="map"></div>
+
+  <button ion-button full (click)='createProfile()' color='dark'>Finish</button>
+</ion-content>

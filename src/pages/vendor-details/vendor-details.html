@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title>{{ vendor.company_name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="{{ vendor.image }}" alt="user_img" height='240' width='240'>
+  </ion-card>
+
+  <ion-card>
+    <ion-title>{{ vendor.company_name }} details</ion-title>
+
+    <ion-item>
+      <b>Vendor: </b>{{ vendor.full_name }}
+    </ion-item>
+
+    <ion-item>
+      <b>Contact: </b>{{ vendor.phone }}
+    </ion-item>
+
+    <ion-item>
+      <b>Food badge: </b>{{ vendor.foodBadge }}
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+
+      <ion-title><b>Product Listing</b></ion-title>
+      <ion-item *ngFor="let item of vendor.produce">
+        {{ item }}
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-title>Vendor Location</ion-title>
+  <div #map id="map"></div>
+</ion-content>

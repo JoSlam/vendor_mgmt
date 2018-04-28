@@ -1,0 +1,14 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title><img src="http://static1.squarespace.com/static/5088002ee4b0763b7eee5ba4/t/558b7605e4b06ff50197a80d/1478644332807/?format=1500w" alt="green_logo" height='40'></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button block color='dark' *ngIf="showButton" (click)="redirectLogin()">Login</button>
+  <button ion-button block color='dark' *ngIf="!showButton" (click)="logout()">Logout</button>
+  <button ion-button block color='dark' (click)="redirectRegister()">Register</button>
+</ion-content>

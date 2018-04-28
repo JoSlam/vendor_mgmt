@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title><img src="http://static1.squarespace.com/static/5088002ee4b0763b7eee5ba4/t/558b7605e4b06ff50197a80d/1478644332807/?format=1500w" alt="green_logo" height='40'></ion-title>
+      
+      <b ion-text *ngIf="profile_loaded" style='color:white'>
+         Welcome: {{ (profile_data | async)?.full_name }}
+      </b>
+
+    
+      <button ion-button small clear *ngIf="!profile_loaded" (click)='redirectLogin()'style='color: white'><b>Login</b></button>
+      <button ion-button small clear float-right *ngIf="profile_loaded" (click)='logout()' style='color: white'><b>Logout</b></button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-list>
+
+    <ion-card *ngFor="let profile of profile_list | async" color='dark'>
+      <img src="{{ profile.image }}" alt="user_img" height='240' width='240'>
+      <ion-card-content>
+        <ion-card-title>
+          {{ profile.company_name }}
+        </ion-card-title>
+        <p>By: {{ profile.full_name }}</p>
+        <button ion-button clear float-right (click)='loadDetails(profile)' style='color: white;'>More Info...</button>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>

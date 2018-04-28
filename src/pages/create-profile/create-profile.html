@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title><img src="http://static1.squarespace.com/static/5088002ee4b0763b7eee5ba4/t/558b7605e4b06ff50197a80d/1478644332807/?format=1500w" alt="green_logo" height='40'></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="userProfile">
+    <ion-item>
+      <ion-label floating>Company Name</ion-label>
+      <ion-input formControlName="company_name" type="text" [(ngModel)]="profile.company_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Full Name</ion-label>
+      <ion-input formControlName="full_name" type="text" [(ngModel)]="profile.full_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-input formControlName="phone" type="text" [(ngModel)]="profile.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Image Url</ion-label>
+      <ion-input formControlName="image" type="text" [(ngModel)]="profile.image"></ion-input>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label floating>Food Badge</ion-label>
+      <ion-select formControlName="foodBadge" [(ngModel)]="profile.foodBadge">
+        <ion-option value='true'>Yes</ion-option>
+        <ion-option value='false'>No</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button (click)="redirectProduce()" color='dark'>Next</button>
+
+  </form>
+
+
+
+</ion-content>

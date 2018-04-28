@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title><img src="http://static1.squarespace.com/static/5088002ee4b0763b7eee5ba4/t/558b7605e4b06ff50197a80d/1478644332807/?format=1500w" alt="green_logo" height='40'></ion-title>    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item *ngIf="profile_loaded" >
+    <ion-card>
+      <ion-card-title><b>Profile Details</b></ion-card-title>
+      <ion-list>
+        <ion-item>
+          <b>Company Name: </b>{{ (profile_data | async)?.company_name }}
+        </ion-item>
+
+        <ion-item>
+          <b>Full Name: </b>{{ (profile_data | async)?.full_name }}
+        </ion-item>
+
+        <ion-item>
+          <b>Phone: </b>{{ (profile_data | async)?.phone }}
+        </ion-item>
+
+        <ion-item>
+          <b>Foodbadge:</b>{{ (profile_data | async)?.foodBadge }}
+        </ion-item>
+
+      </ion-list>
+    </ion-card>
+
+    <ion-card>
+
+      <ion-card-title><b>Produce List</b></ion-card-title>
+      <ion-row>
+        <ion-col col-9>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="newItem.name" placeholder="New item"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="addItem()" color='dark'>Add Item</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-list>
+        <ion-item-sliding *ngFor="let product of products | async">
+          <ion-item>
+            {{ product }}
+            <ion-icon name="arrow-forward" end float-right></ion-icon>
+          </ion-item>
+
+
+          <ion-item-options side="right">
+            <button ion-button color="danger" icon-only (click)="removeItem(product)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+
+    </ion-card>
+  </ion-item>
+
+  <button ion-button block clear *ngIf="!profile_loaded" (click)="redirectLogin()">Login to view profile</button>
+  <button ion-button block clear *ngIf="!profile_loaded" (click)="redirectRegister()">Register to create vendor profile</button>
+  <button ion-button block clear *ngIf="profile_loaded" (click)="redirectCreateProfile()">Re-create vendor profile</button>
+</ion-content>
